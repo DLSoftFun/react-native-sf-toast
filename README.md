@@ -4,7 +4,9 @@
 
 # 安装
 > npm install react-native-sf-toast
+
 > npm i prop-types
+
 > npm install antd-mobile --save
 
 # 例子
