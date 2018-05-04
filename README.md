@@ -1,4 +1,4 @@
-# react-native-sf-result
+# react-native-sf-toast
 
 # 结果页
 
