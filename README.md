@@ -9,84 +9,89 @@
 # 例子
 ```
 /**
-* Sample React Native App
-* https://github.com/facebook/react-native
-* @flow
-*/
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-Platform,
-StyleSheet,
-Text,
-View
+    Platform,
+    StyleSheet,
+    Text,
+    View
 } from 'react-native';
-import SFToast from 'react-native-sf-toast';
+
+import SFToast from "./react-native-sf-toast/src/SFToast";
 
 const instructions = Platform.select({
-ios: 'Press Cmd+R to reload,\n' +
-'Cmd+D or shake for dev menu',
-android: 'Double tap R on your keyboard to reload,\n' +
-'Shake or press menu button for dev menu',
+    ios: 'Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+    android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
 });
 
 type Props = {};
 export default class App extends Component<Props> {
-  constructor(props) {
+
+    constructor(props) {
         super(props)
         this.state = {
-            show:false
+            show: false
         }
     }
-render() {
-return (
-<View style={styles.container}>
-<Text style={styles.welcome}
-onPress={() =>{
-  this.setState({
-                 show:true
-             })
-}}>
-Welcome to React Native!
-</Text>
 
-  <SFToast
-              background={true}
-              toastType={SFToast.typeSuccess}
-              toastTxt={'success !'}
-              show={this.state.show}
-              time={1000}
-          />
+    render() {
+        return (
+            <View
+                style={styles.container}>
 
-<Text style={styles.instructions}>
-To get started, edit App.js
-</Text>
-<Text style={styles.instructions}>
-{instructions}
-</Text>
-</View>
-);
-}
-}
+                <SFToast ref={(ref) => this.toast = ref}/>
 
-const styles = StyleSheet.create({
-container: {
-flex: 1,
-justifyContent: 'center',
-alignItems: 'center',
-backgroundColor: '#F5FCFF',
-},
-welcome: {
-fontSize: 20,
-textAlign: 'center',
-margin: 10,
-},
-instructions: {
-textAlign: 'center',
-color: '#333333',
-marginBottom: 5,
-},
-});
+                    <Text
+                        style={styles.welcome}
+                        onPress={() => {
+                          this.toast.showSuccess('success !!!', 2000);
+                        }}>
+                        Welcome to React
+                        Native!
+                    </Text>
+                    <Text
+                        style={styles.instructions}>
+                        To get started,
+                        edit
+                        App.js
+                    </Text>
+                    <Text
+                        style={styles.instructions}>
+                        {instructions}
+                    </Text>
+
+
+            </View>
+    );
+    }
+    }
+
+    const styles = StyleSheet.create({
+        container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+        welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+        instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    },
+    });
+
 
 
 
