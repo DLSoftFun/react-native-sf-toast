@@ -5,9 +5,6 @@
 # 安装
 > npm install react-native-sf-toast
 
-> npm i prop-types
-
-> npm install antd-mobile --save
 
 # 例子
 ```
@@ -35,15 +32,32 @@ android: 'Double tap R on your keyboard to reload,\n' +
 
 type Props = {};
 export default class App extends Component<Props> {
+  constructor(props) {
+        super(props)
+        this.state = {
+            show:false
+        }
+    }
 render() {
 return (
 <View style={styles.container}>
 <Text style={styles.welcome}
 onPress={() =>{
-SFToast.showLoadingWithDuration('rmaa',2,true);
+  this.setState({
+                 show:true
+             })
 }}>
 Welcome to React Native!
 </Text>
+
+  <SFToast
+              background={true}
+              toastType={SFToast.typeSuccess}
+              toastTxt={'success !'}
+              show={this.state.show}
+              time={1000}
+          />
+
 <Text style={styles.instructions}>
 To get started, edit App.js
 </Text>
