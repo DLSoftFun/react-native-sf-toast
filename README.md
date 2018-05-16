@@ -5,6 +5,14 @@
 # 安装
 > npm install react-native-sf-toast
 
+# 使用
+```
+import {SFToast} from "react-native-sf-toast";
+SFToast.showSuccess('title',2000);
+SFToast.showFail('title',2000);
+SFToast.showLoading('title',2000);
+SFToast.showText('title',2000);  
+```
 
 # 例子
 ```
